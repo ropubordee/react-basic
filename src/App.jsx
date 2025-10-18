@@ -1,16 +1,24 @@
 import React, { useState } from "react";
 
 const App = () => {
-  const name = "pubordee";
-  const [age, setAge] = useState(30);
-
+  const [data, setData] = useState([
+    { id: 1, name: "pubordee", gender: "ชาย" },
+    { id: 2, name: "น้ำ", gender: "หญิง" },
+    { id: 3, name: "โจ้", gender: "ชาย" },
+  ]);
+  console.table(data);
   return (
     <>
-      <h1>สวัสดีครับคุณ {name}</h1>
-      <h2>อายุ : {age} ปั</h2>
-      <button onClick={() => setAge(age + 1)}>เพิ่ม</button>
-      <button onClick={() => setAge(age - 1)}>ลด</button>
-      <button onClick={() => setAge(30)}>เคลียร์</button>
+      <h1>จำนวนประชากร {data.length}</h1>
+      <ul>
+        {data.map((item, index) => (
+          <li key={index}>
+            <h3>
+              {item.id}| {item.name} | {item.gender}
+            </h3>
+          </li>
+        ))}
+      </ul>
     </>
   );
 };
