@@ -1,11 +1,12 @@
-import React from 'react'
-
+import React from "react";
+import "./StyleCss/Header.css";
 const Header = () => {
   return (
-    <div>
-      Header
-    </div>
-  )
-}
+    <nav>
+      <h1>Header</h1>
+      <button>Light/Dark</button>
+    </nav>
+  );
+};
 
-export default Header
+export default Header;
