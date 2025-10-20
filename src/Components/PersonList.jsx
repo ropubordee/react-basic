@@ -1,15 +1,8 @@
 import React, { useState } from "react";
-import boy from "../assets/boy.svg";
-import girl from "../assets/girl.svg";
-import "./StyleCss/PersonList.css";
-const PersonList = () => {
-  const [data, setData] = useState([
-    { id: 1, name: "pubordee", gender: "ชาย" },
-    { id: 2, name: "น้ำ", gender: "หญิง" },
-    { id: 3, name: "โจ้", gender: "ชาย" },
-    { id: 4, name: "พลอย", gender: "หญิง" },
-  ]);
 
+import "./StyleCss/PersonList.css";
+import User from "./User";
+const PersonList = ({data}) => {
   const myStyle = {
     color: "red",
     fontSize: "30px",
@@ -25,19 +18,7 @@ const PersonList = () => {
       <ul>
         {show &&
           data.map((item, index) => (
-            <li key={index} style={{borderStyle :'solid',borderColor : item.gender =='ชาย' ? 'green' : 'pink'}}>
-              <img
-                src={item.gender == "ชาย" ? boy : girl}
-                alt="imageicon"
-                width={50}
-                height={50}
-              />
-
-              <p>{item.name}</p>
-              <pv className="control">
-                <button>ลบ</button>
-              </pv>
-            </li>
+            <User key={index} item={item}/>
           ))}
       </ul>
     </div>
