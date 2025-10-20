@@ -1,7 +1,7 @@
 import React from "react";
 import boy from "../assets/boy.svg";
 import girl from "../assets/girl.svg";
-const User = ({item}) => {
+const User = ({item,deleteUser}) => {
   return (
     <>
       <li
@@ -19,7 +19,7 @@ const User = ({item}) => {
 
         <p>{item.name}</p>
         <pv className="control">
-          <button>ลบ</button>
+          <button onClick={()=>deleteUser(item.id)}>ลบ</button>
         </pv>
       </li>
     </>

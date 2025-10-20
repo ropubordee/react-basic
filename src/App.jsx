@@ -11,11 +11,15 @@ const App = () => {
     { id: 3, name: "โจ้", gender: "ชาย" },
     { id: 4, name: "พลอย", gender: "หญิง" },
   ]);
+  const deleteUser =(id)=>{
+   const result = data.filter((user)=>user.id !== id)
+   setData(result)
+  }
   return (
     <div className="App">
       <Header title='PersonApp' />
       <main>
-        <PersonList data={data}/>
+        <PersonList data={data} deleteUser={deleteUser}/>
       </main>
     </div>
   );
