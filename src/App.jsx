@@ -16,13 +16,18 @@ const App = () => {
     const result = data.filter((user) => user.id !== id);
     setData(result);
   };
+
+  const [theme, setTheme] = useState("light");
+
   return (
-    <div className="App">
-      <Header title="PersonApp" />
-      <main>
-        <AddForm data={data} setData={setData} />
-        <PersonList data={data} deleteUser={deleteUser} />
-      </main>
+    <div className={theme}>
+      <div className="App">
+        <Header title="PersonApp" theme={theme} setTheme={setTheme} />
+        <main>
+          <AddForm data={data} setData={setData} />
+          <PersonList data={data} deleteUser={deleteUser} />
+        </main>
+      </div>
     </div>
   );
 };
