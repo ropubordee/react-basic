@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Header from "./Components/Header";
 import PersonList from "./Components/PersonList";
 import "./App.css";
@@ -16,8 +16,10 @@ const App = () => {
     const result = data.filter((user) => user.id !== id);
     setData(result);
   };
-
-  const [theme, setTheme] = useState("light");
+  const [theme, setTheme] = useState(localStorage.getItem("mode") || "light");
+  useEffect(() => {
+    localStorage.setItem("mode", theme);
+  }, [theme]);
 
   return (
     <div className={theme}>

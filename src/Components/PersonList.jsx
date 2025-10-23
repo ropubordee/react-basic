@@ -1,8 +1,10 @@
 import React, { useState } from "react";
+import { FaRegEye } from "react-icons/fa";
+import { FaRegEyeSlash } from "react-icons/fa";
 
 import "./StyleCss/PersonList.css";
 import User from "./User";
-const PersonList = ({data,deleteUser}) => {
+const PersonList = ({ data, deleteUser }) => {
   const myStyle = {
     color: "red",
     fontSize: "30px",
@@ -13,12 +15,14 @@ const PersonList = ({data,deleteUser}) => {
     <div className="container">
       <div className="header">
         <h2 style={myStyle}>จำนวนประชากร {data.length}</h2>
-        <button onClick={() => setShow(!show)}>{show ? "ซ่อน" : "แสดง"}</button>
+        <span onClick={() => setShow(!show)}>
+          {show ? <FaRegEyeSlash size={30} /> : <FaRegEye size={30} />}
+        </span>
       </div>
       <ul>
         {show &&
           data.map((item, index) => (
-            <User key={index} item={item} deleteUser={deleteUser}/>
+            <User key={index} item={item} deleteUser={deleteUser} />
           ))}
       </ul>
     </div>

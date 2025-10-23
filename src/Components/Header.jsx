@@ -1,19 +1,23 @@
 import React from "react";
 import "./StyleCss/Header.css";
-const Header = ({title,theme,setTheme}) => {
+import { MdSunny } from "react-icons/md";
+import { BsFillMoonStarsFill } from "react-icons/bs";
 
-  const toggleTheme =()=>{
-    if(theme === 'light'){
-      setTheme('dark')
-    }else{
-      setTheme('light')
+const Header = ({ title, theme, setTheme }) => {
+  const toggleTheme = () => {
+    if (theme === "light") {
+      setTheme("dark");
+    } else {
+      setTheme("light");
     }
-  }
+  };
 
   return (
     <nav>
       <h1>{title}</h1>
-      <button onClick={toggleTheme}>สลับโหมด : {theme}</button>
+      <span onClick={toggleTheme}>
+        {theme === "light" ? <MdSunny size={30} /> : <BsFillMoonStarsFill size={30} />}
+      </span>
     </nav>
   );
 };
