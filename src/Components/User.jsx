@@ -18,9 +18,9 @@ const User = ({item,deleteUser}) => {
         />
 
         <p>{item.name}</p>
-        <pv className="control">
+        <p className="control">
           <button onClick={()=>deleteUser(item.id)}>ลบ</button>
-        </pv>
+        </p>
       </li>
     </>
   );

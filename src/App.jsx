@@ -1,35 +1,31 @@
 import React, { useEffect, useState } from "react";
-import Header from "./Components/Header";
-import PersonList from "./Components/PersonList";
-import "./App.css";
-import "./index.css";
-import AddForm from "./Components/AddForm";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import Home from "./pages/Home";
+import Product from "./pages/Product";
+import HomePersonList from "./pages/HomePersonList";
+import MainNav from "./Components/MainNav";
+import RootLayout from "./Components/layouts/RootLayout";
+import ProductDetail from "./pages/ProductDetail";
+import PageNotFound from "./Components/PageNotFound";
+
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <RootLayout />,
+    errorElement: <PageNotFound />,
+    children: [
+      { path: "/", element: <Home /> },
+      { path: "product", element: <Product /> },
+      { path: "/product/:productId", element: <ProductDetail /> },
+    ],
+  },
+  { path: "person", element: <HomePersonList /> },
+]);
 
 const App = () => {
-  const [data, setData] = useState([
-    { id: 1, name: "pubordee", gender: "ชาย" },
-    { id: 2, name: "น้ำ", gender: "หญิง" },
-    { id: 3, name: "โจ้", gender: "ชาย" },
-    { id: 4, name: "พลอย", gender: "หญิง" },
-  ]);
-  const deleteUser = (id) => {
-    const result = data.filter((user) => user.id !== id);
-    setData(result);
-  };
-  const [theme, setTheme] = useState(localStorage.getItem("mode") || "light");
-  useEffect(() => {
-    localStorage.setItem("mode", theme);
-  }, [theme]);
-
   return (
-    <div className={theme}>
-      <div className="App">
-        <Header title="PersonApp" theme={theme} setTheme={setTheme} />
-        <main>
-          <AddForm data={data} setData={setData} />
-          <PersonList data={data} deleteUser={deleteUser} />
-        </main>
-      </div>
+    <div>
+      <RouterProvider router={router} />
     </div>
   );
 };
