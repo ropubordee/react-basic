@@ -1,0 +1,28 @@
+.header-nav{
+    /* border: 1px solid red; */
+    display: flex;
+
+}
+
+.Logo{
+    display: flex;
+    align-items: center;  
+    text-align: center;
+    /* border: 1px solid red; */
+}
+.Nav{
+    width: 100%;
+   /* border:  1px solid red; */
+ 
+}
+.Nav ul{
+    display: flex;
+    justify-content: center;
+    gap: 10px;   
+    list-style: none;
+    align-items: center;
+    padding: 20px 0px;
+}
+.Nav ul li a{
+    text-decoration-line: none;
+}

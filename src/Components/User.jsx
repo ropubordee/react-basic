@@ -4,7 +4,7 @@ import girl from "../assets/girl.svg";
 const User = ({item,deleteUser}) => {
   return (
     <>
-      <li
+      <li className="li-nva"
         style={{
           borderStyle: "solid",
           borderColor: item.gender == "ชาย" ? "green" : "pink",
