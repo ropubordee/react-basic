@@ -6,6 +6,7 @@ import HomePersonList from "./pages/HomePersonList";
 import RootLayout from "./Components/layouts/RootLayout";
 import ProductDetail from "./pages/ProductDetail";
 import PageNotFound from "./Components/PageNotFound";
+import Section from "./Components/Section";
 
 const router = createBrowserRouter([
   {
@@ -16,6 +17,7 @@ const router = createBrowserRouter([
       { path: "/", element: <Home /> },
       { path: "product", element: <Product /> },
       { path: "product/:productId", element: <ProductDetail /> },
+      { path: "section", element: <Section /> },
     ],
   },
   { path: "person", element: <HomePersonList /> },
