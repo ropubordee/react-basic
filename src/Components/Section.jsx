@@ -1,16 +1,7 @@
 import React, { useState } from "react";
-import { create } from "zustand";
-const Store = (set) => {
-  return {
-    fname: "Pubordee-dev",
-    lname: "Srisurach",
-    setName: (newvalue) => set({ fname: newvalue }),
-  };
-};
-const useStore = create(Store);
+import useStore from "../Store/pubordeeStore";
 const Section = () => {
-
-  const [text,setText] = useState('')
+  const [text, setText] = useState("");
 
   const fanme = useStore((state) => state.fname);
   const lname = useStore((state) => state.lname);
@@ -19,10 +10,9 @@ const Section = () => {
   const handSetName = () => {
     setName(text);
   };
-  const handleChange = (e)=>{
-   setText(e.target.value);
-    
-  }
+  const handleChange = (e) => {
+    setText(e.target.value);
+  };
 
   return (
     <div>
@@ -30,7 +20,7 @@ const Section = () => {
         {fanme}
         {lname}
       </h1>
-      <input  onChange={handleChange}type="text" />
+      <input onChange={handleChange} type="text" />
       <button onClick={handSetName}>Set Name</button>
     </div>
   );

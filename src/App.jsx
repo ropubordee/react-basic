@@ -7,17 +7,21 @@ import RootLayout from "./Components/layouts/RootLayout";
 import ProductDetail from "./pages/ProductDetail";
 import PageNotFound from "./Components/PageNotFound";
 import Section from "./Components/Section";
+import Section2 from "./Components/Section2";
+import Section3 from "./Components/Section3";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <RootLayout />,
-    errorElement: <PageNotFound />,
+    // errorElement: <PageNotFound />,
     children: [
       { path: "/", element: <Home /> },
       { path: "product", element: <Product /> },
       { path: "product/:productId", element: <ProductDetail /> },
       { path: "section", element: <Section /> },
+      { path: "section2", element: <Section2 /> },
+      { path: "section3", element: <Section3 /> },
     ],
   },
   { path: "person", element: <HomePersonList /> },
