@@ -9,6 +9,7 @@ import PageNotFound from "./Components/PageNotFound";
 import Section from "./Components/Section";
 import Section2 from "./Components/Section2";
 import Section3 from "./Components/Section3";
+import Section4 from "./Components/Section4";
 
 const router = createBrowserRouter([
   {
@@ -22,6 +23,7 @@ const router = createBrowserRouter([
       { path: "section", element: <Section /> },
       { path: "section2", element: <Section2 /> },
       { path: "section3", element: <Section3 /> },
+      { path: "section4", element: <Section4 /> },
     ],
   },
   { path: "person", element: <HomePersonList /> },
