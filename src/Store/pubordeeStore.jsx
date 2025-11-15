@@ -1,4 +1,6 @@
 import { create } from "zustand";
+import { persist } from "zustand/middleware";
+import axios from "axios";
 const Store = (set) => {
   return {
     fname: "Pubordee-dev",
@@ -20,17 +22,48 @@ const Store = (set) => {
       { id: 1, title: "work1" },
       { id: 2, title: "work2" },
     ],
-    addObj : (newvalue)=> set((state)=>({
-      arr2 : [...state.arr2,{
-        id : Date.now(),
-        title : newvalue
-      }]
-    })),
-    delObj : (id)=>set((state)=>({
-      arr2 : state.arr2.filter((item,index)=> item.id !== id)
-    }))
+    addObj: (newvalue) =>
+      set((state) => ({
+        arr2: [
+          ...state.arr2,
+          {
+            id: Date.now(),
+            title: newvalue,
+          },
+        ],
+      })),
+    delObj: (id) =>
+      set((state) => ({
+        arr2: state.arr2.filter((item, index) => item.id !== id),
+      })),
+
+    //TODO
+    data: [],
+    isLoading: false,
+    error: false,
+    errorMessage: "",
+    getData: async () => {
+      try {
+        set({ isLoading: true, error: false });
+        const res = await axios.get(
+          "https://jsonplaceholder.typicode.com/users"
+        );
+
+        set({ isLoading: false, data: res.data });
+      } catch (err) {
+        set({ error: true, errorMessage: err.message, isLoading: false });
+      }
+    },
   };
 };
-const useStore = create(Store);
+const usePersist = {
+  name : 'pubordee-dev',
+  getStorage : ()=> localStorage,
+  partialize : (state)=>{
+    value : state.value
+  }
+}
+
+const useStore = create(persist(Store,usePersist));
 
 export default useStore;
